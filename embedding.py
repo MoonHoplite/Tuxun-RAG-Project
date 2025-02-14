@@ -1,5 +1,4 @@
 from sentence_transformers import SentenceTransformer
-from typing import Optional
 
 
 PATH = "model"
@@ -19,14 +18,14 @@ class TextEmbeddingModel:
     - encode_text(text: str) -> list:
         Encode the input text into an embedding vector.
     """
-    def __init__(self, model_name_or_path: Optional[str] = PATH) -> None:
+    def __init__(self, model_name_or_path: str = PATH) -> None:
         try:
-            self.model = SentenceTransformer(model_name_or_path)
-            print("Model loaded successfully.")
+            self.model = SentenceTransformer(model_name_or_path, local_files_only=True)
+            # print("Model loaded successfully.")
         except:
-            print("Model failed to load, will use default model instead.")
+            # print("Model failed to load, will use default embedding model instead.")
             self.model = SentenceTransformer(DEFAULT_MODEL)
-            print("Default model loaded successfully.")
+            # print("Default model loaded successfully.")
 
     def encode_text(self, text: str) -> list:
         return self.model.encode(text)
