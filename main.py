@@ -17,14 +17,12 @@ if __name__ == '__main__':
 
     pipe = Inference(database_client, embedding_model, chatting_client)
     
-    # while True:
-    #     user_clue = input()
-    #     if user_clue == "exit":
-    #         print("Goodbye!")
-    #         break
-    #     response = pipe.pipe(user_clue)
-    #     print(response)
+    print("请开始输入问题，输入exit退出")
+    while True:
+        user_clue = input()
+        if user_clue == "exit":
+            print("Goodbye!")
+            break
+        response = pipe.pipe(user_clue)
+        print(response)
     
-    user_clue = "汽车左行，太阳在北边，有许多树林，车牌有黄色的和白色的，我在哪？"
-    response = pipe.pipe(user_clue)
-    print(response)
