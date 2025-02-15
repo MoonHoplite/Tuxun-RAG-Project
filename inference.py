@@ -55,5 +55,6 @@ class Inference:
     def pipe(self, user_clue: str) -> str:
         retrieved_data = self.retrieve_data(user_clue)
         prompt = self.generate_prompt(user_clue, retrieved_data)
+        print(prompt)
         response = self.generate_response(prompt)
         return response

@@ -21,11 +21,11 @@ class TextEmbeddingModel:
     def __init__(self, model_name_or_path: str = PATH) -> None:
         try:
             self.model = SentenceTransformer(model_name_or_path, local_files_only=True)
-            # print("Model loaded successfully.")
+            print("Embedding Model loaded successfully.")
         except:
-            # print("Model failed to load, will use default embedding model instead.")
+            print("Model failed to load, will use default embedding model instead.")
             self.model = SentenceTransformer(DEFAULT_MODEL)
-            # print("Default model loaded successfully.")
+            print("Default model loaded successfully.")
 
     def encode_text(self, text: str) -> list:
         return self.model.encode(text)
